@@ -1,0 +1,93 @@
+<h1>Template : <small>Switches</small></h1>
+<hr />
+<form #miformulario="ngForm">
+  <!--RadioButton-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Genero</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="RadioGenero"
+          [(ngModel)]="persona.genero"
+          value="M"
+          id="Radiomasculino"
+          required
+        />
+        <label class="form-check-label" for="Radiomasculino"> Masculino </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="RadioGenero"
+          [(ngModel)]="persona.genero"
+          value="F"
+          id="Radiofemenino"
+          required
+        />
+        <label class="form-check-label" for="Radiofemenino"> Femenino </label>
+      </div>
+    </div>
+  </div>
+
+  <!---Switches-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          [(ngModel)]="persona.notificaciones"
+          name="notificaciones"
+          type="checkbox"
+          id="notificaciones"
+        />
+        <label class="form-check-label" for="notificaciones"
+          >Quiero recibir notificaciones</label
+        >
+      </div>
+    </div>
+  </div>
+  <!---Checkbox-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [(ngModel)]="terminos"
+          name="terminos"
+          id="terminos"
+          required
+        />
+        <label class="form-check-label" for="terminos"
+          >Terminos y condiciones</label
+        >
+        <br />
+        <span class="form-text text-danger" *ngIf="validarterminos()"
+          >Debe aceptar los terminos y condiciones</span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button
+        class="btn btn-primary float-end"
+        [disabled]="miformulario.invalid"
+      >
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<h5>valor del formulario</h5>
+<pre>{{ miformulario.value | json }}</pre>
+<h5>personas</h5>
+<pre>{{ persona | json }}</pre>
+<h5>valid</h5>
+<pre>{{ miformulario.valid }}</pre>
