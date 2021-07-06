@@ -13,7 +13,7 @@ export class SwitchesComponent implements OnInit {
     //definir valores por defecto al formulario
     this.miformulario.reset({ ...this.persona, condiciones: true });
   }
-
+  //para switches siempre se deben declarar como arrays
   miformulario: FormGroup = this.builder.group({
     genero: ['M', Validators.required],
     Notificaciones: [true, Validators.required],
@@ -24,4 +24,10 @@ export class SwitchesComponent implements OnInit {
     genero: 'M',
     Notificaciones: true,
   };
+
+  guardar() {
+    const formvalue = { ...this.miformulario.value };
+    delete formvalue.terminos;
+    console.log(formvalue);
+  }
 }

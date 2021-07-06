@@ -1,6 +1,6 @@
 <h1>Template : <small>Switches</small></h1>
 <hr />
-<form [formGroup]="miformulario">
+<form [formGroup]="miformulario" (ngSubmit)="guardar()">
   <!--RadioButton-->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Genero</label>
@@ -68,7 +68,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
