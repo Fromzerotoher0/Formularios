@@ -1,1 +1,82 @@
-<p>dinamicos works!</p>
+<h1>Template : <small>Dinamicos</small></h1>
+<hr />
+<form [formGroup]="miformulario" (ngSubmit)="guardar()">
+  <!---Input del nombre-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="nombre de la persona"
+      />
+      <span class="form-text text-danger" *ngIf="validarcampo('nombre')"
+        >-Este campo es obligatorio* -minimo 3 letras*</span
+      >
+    </div>
+  </div>
+  <!--input group de para agregar juegos favoritos-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">juegos</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          type="text"
+          (keyup.enter)="agregarfavorito()"
+          class="form-control"
+          [formControl]="nuevofavorito"
+        />
+        <button
+          type="button"
+          (click)="agregarfavorito()"
+          class="btn btn-outline-primary"
+        >
+          agregar
+        </button>
+      </div>
+      <span class="form-text text-danger" *ngIf="favoritosarr.length == 0"
+        >debe tener almenos un favorito*</span
+      >
+    </div>
+  </div>
+  <!---lista de juegos favoritos-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+      <div
+        class="input-group mb-1"
+        formArrayName="favoritos"
+        *ngFor="let favorito of favoritosarr.controls; let i = index"
+      >
+        <input type="text" class="form-control" [formControlName]="i" />
+        <button
+          type="button"
+          (click)="borrarfavorito(i)"
+          class="btn btn-outline-danger"
+        >
+          eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!---Boton para guardar-->
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary mt-2 float-end">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<span>valid</span>
+<pre>{{ miformulario.valid | json }}</pre>
+<span>pristine</span>
+<pre>{{ miformulario.pristine }}</pre>
+<span>touched</span>
+<pre>{{ miformulario.touched }}</pre>
+<span>value</span>
+<pre>{{ miformulario.value | json }}</pre>
+<br />
