@@ -1,2 +1,81 @@
 <h1>Template : <small>Switches</small></h1>
 <hr />
+<form [formGroup]="miformulario">
+  <!--RadioButton-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Genero</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="genero"
+          value="M"
+          id="Radiomasculino"
+        />
+        <label class="form-check-label" for="Radiomasculino"> Masculino </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          formControlName="genero"
+          value="F"
+          type="radio"
+          id="Radiofemenino"
+        />
+        <label class="form-check-label" for="Radiofemenino"> Femenino </label>
+      </div>
+    </div>
+  </div>
+
+  <!---Switches-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          formControlName="Notificaciones"
+          id="Notificaciones"
+        />
+        <label class="form-check-label" for="notificaciones"
+          >Quiero recibir notificaciones</label
+        >
+      </div>
+    </div>
+  </div>
+  <!---Checkbox-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          formControlName="terminos"
+          type="checkbox"
+          id="terminos"
+        />
+        <label class="form-check-label" for="terminos"
+          >Terminos y condiciones</label
+        >
+        <br />
+        <span class="form-text text-danger"
+          >Debe aceptar los terminos y condiciones</span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<h5>valor del formulario</h5>
+<pre>{{ miformulario.value | json }}</pre>
+<h5>personas</h5>
+<pre>{{ persona | json }}</pre>
+<h5>valid</h5>
+<pre>{{ miformulario.valid }}</pre>
